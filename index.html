@@ -25,7 +25,7 @@
         </button>
       </div>
       <div class="navbar-end hidden lg:flex">
-        <ul class="menu menu-horizontal px-1 font-bold text-xl">
+        <ul class="menu menu-horizontal px-1 font-semibold text-xl">
           <li><button class="rounded-full">MOVIES</button></li>
           <li><button class="rounded-full">SERIE</button></li>
           <li><button class="rounded-full">PROFILO</button></li>
@@ -34,36 +34,37 @@
     </div>
 
     <div class="collapse-content lg:hidden z-1">
-      <ul class="menu">
-        <li><button>Item 1</button></li>
-        <li>
-          <button>Parent</button>
-          <ul>
-            <li><button>Submenu 1</button></li>
-            <li><button>Submenu 2</button></li>
-          </ul>
-        </li>
-        <li><button>Item 3</button></li>
+      <ul class="menupx-1 font-normal text-md">
+        <li class=""><button class="btn rounded-full">MOVIES</button></li>
+        <li class="mt-2.5"><button class="btn rounded-full">SERIE</button></li>
+        <li class="mt-2.5"><button class="btn rounded-full">PROFILO</button></li>
       </ul>
     </div>
   </header>
   <main>
     <!-- Hero Section -->
     <section id="heroSection">
-      <div class="hero min-h-160"
-        style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);">
+      <div id="heroWrapper" class="hero min-h-160 ">
         <div class="hero-overlay"></div>
-        <div class="hero-content text-neutral-content w-full !justify-start">
-          <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold">Titolo Film</h1>
-            <p class="mb-5">Overview</p>
-            <button class="btn bg-green-900 border-0 hover:bg-green-950">Guarda <span class="text-yellow-600">Subito!</span></button>
+        <div class="hero-content text-neutral-content lg:max-w-[1200px] w-full !justify-start">
+          <div class="max-w-md backdrop-grayscale-50">
+            <h1 id="heroTitle" class="mb-5 text-5xl font-bold">Titolo Film</h1>
+            <p id="heroOverview" class="mb-5">Overview</p>
+            <button
+              class="p-3 bg-red-900 border-0 hover:bg-red-950 rounded-3xl cursor-pointer transition-all duration-300">Guarda
+              <span class="text-yellow-600">Subito!</span></button>
           </div>
         </div>
       </div>
     </section>
     <!-- Alti film da vedere -->
-    <section></section>
+    <section class="mx-auto max-w-[1200px]">
+      <div class="m-4">
+        <h2 class="font-bold text-2xl">Altri film da Guardare!</h2>
+        <!-- container slider -->
+        <div id="watchNext" class="mt-5 flex overflow-x-scroll gap-8"></div>
+      </div>
+    </section>
   </main>
   <script type="module" src="/src/main.js"></script>
 </body>
