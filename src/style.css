@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+body, html{
+    min-width: 100%;
+    min-height: 100%;
+}

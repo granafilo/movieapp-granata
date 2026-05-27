@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>movieapp-granata</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+
+<body>
+  <header class="max-lg:collapse bg-base-200 shadow-sm w-full rounded-md">
+    <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
+    <label for="navbar-1-toggle" class="fixed inset-0 hidden max-lg:peer-checked:block"></label>
+    <div class="collapse-title navbar">
+      <div class="navbar-start">
+        <label for="navbar-1-toggle" class="btn btn-ghost lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+        </label>
+        <button class="btn p-3 overflow-hidden rounded-full">
+          <img src="favicon.svg" class="object-fit w-full h-full" alt="">
+        </button>
+      </div>
+      <div class="navbar-end hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 font-bold text-xl">
+          <li><button class="rounded-full">MOVIES</button></li>
+          <li><button class="rounded-full">SERIE</button></li>
+          <li><button class="rounded-full">PROFILO</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="collapse-content lg:hidden z-1">
+      <ul class="menu">
+        <li><button>Item 1</button></li>
+        <li>
+          <button>Parent</button>
+          <ul>
+            <li><button>Submenu 1</button></li>
+            <li><button>Submenu 2</button></li>
+          </ul>
+        </li>
+        <li><button>Item 3</button></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <!-- Hero Section -->
+    <section id="heroSection">
+      <div class="hero min-h-160"
+        style="background-image: url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp);">
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-neutral-content w-full !justify-start">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">Titolo Film</h1>
+            <p class="mb-5">Overview</p>
+            <button class="btn bg-green-900 border-0 hover:bg-green-950">Guarda <span class="text-yellow-600">Subito!</span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Alti film da vedere -->
+    <section></section>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
