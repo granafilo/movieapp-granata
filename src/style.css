@@ -5,3 +5,9 @@ body, html{
     min-width: 100%;
     min-height: 100%;
 }
+
+@theme{
+
+    --shadow-glow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+
+}
