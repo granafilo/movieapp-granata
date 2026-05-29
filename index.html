@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>movieapp-granata</title>
-  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="src/style/style.css">
 </head>
 
 <body>
@@ -20,28 +20,30 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
         </label>
-        <button class="btn p-3 overflow-hidden rounded-full">
-          <img src="favicon.svg" class="object-fit w-full h-full" alt="">
+        <button id="headerLogo" onclick="" class="btn p-3 overflow-hidden rounded-full">
+          <a href="/index.html" class="w-full h-full">
+            <img src="favicon.svg" class="object-fit w-full h-full" alt="">
+          </a>
         </button>
       </div>
       <div class="navbar-end hidden lg:flex">
         <ul class="menu menu-horizontal px-1 font-semibold text-xl">
-          <li><button class="rounded-full">MOVIES</button></li>
-          <li><button class="rounded-full">SERIE</button></li>
-          <li><button class="rounded-full">PROFILO</button></li>
+          <li><a href="movies.html"><button class="rounded-full">MOVIES</button></a></li>
+          <li><a href="serie.html"><button class="rounded-full">SERIE</button></a></li>
+          <li><a href="profile.html"><button class="rounded-full">PROFILO</button></a></li>
         </ul>
       </div>
     </div>
 
     <div class="collapse-content lg:hidden z-1">
       <ul class="menupx-1 font-normal text-md">
-        <li class=""><button class="btn rounded-full">MOVIES</button></li>
-        <li class="mt-2.5"><button class="btn rounded-full">SERIE</button></li>
-        <li class="mt-2.5"><button class="btn rounded-full">PROFILO</button></li>
+        <li class=""><a href="movies.html"><button class="rounded-full">MOVIES</button></a></li>
+        <li class="mt-2.5"><a href="serie.html"><button class="rounded-full">SERIE</button></a></li>
+        <li class="mt-2.5"><a href="profile.html"><button class="rounded-full">PROFILO</button></a></li>
       </ul>
     </div>
   </header>
-  <main>
+  <main class="flex-1">
     <!-- Hero Section -->
     <section id="heroSection">
       <div id="heroWrapper" class="hero min-h-160 ">
@@ -109,9 +111,8 @@
       <p>Copyright © 2026 - All right reserved by ACME Industries Ltd</p>
     </aside>
   </footer>
-  
+
   <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>
-
