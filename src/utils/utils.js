@@ -22,11 +22,4 @@ export const getOptions = {
   }
 };
 
-export const getReleaseDate = async (id, lang = "IT") => {
-    let releaseDate = await getResultFromFetch(`https://api.themoviedb.org/3/movie/${id}/release_dates`, getOptions);
-    const data = releaseDate.find(date => date.iso_3166_1 === lang).release_dates[0].release_date;    
-
-    return new Date(data);
-};
-
 export const wait = (ms) => new Promise(r => setTimeout(r, ms));

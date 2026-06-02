@@ -68,6 +68,7 @@ export const getFilmCard = (title, overview, image, avgVote, data, id) => {
 
   return cardContainer;
 };
+
 const colorBadge = (voto) => {
   if (voto < 6) {
     return "badge-error";
