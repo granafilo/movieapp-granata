@@ -24,7 +24,9 @@ const filmaDaGuardare = (movies) => {
 const popularActor = (actor) => {
   let cardWrapper = document.getElementById("popularActor");
   for (let i = 0; i < 15; i++) {
-    cardWrapper.appendChild(getActorCard(actor[i].name, actor[i].profile_path));
+    console.log(actor[i]);
+    
+    cardWrapper.appendChild(getActorCard(actor[i].name, actor[i].profile_path, actor[i].gender));
   }
 };
 
@@ -34,17 +36,17 @@ const loadHomePage = (movies, actor) => {
   filmaDaGuardare(movies);
   popularActor(actor)
 
-  const watchNext = document.getElementById('watchNext');
-  const popularActorDiv = document.getElementById('popularActor');
-  watchNext.addEventListener('wheel', (event) => {
-    event.preventDefault();
-    watchNext.scrollLeft += event.deltaY;
-  });
+  // const watchNext = document.getElementById('watchNext');
+  // const popularActorDiv = document.getElementById('popularActor');
+  // watchNext.addEventListener('wheel', (event) => {
+  //   event.preventDefault();
+  //   watchNext.scrollLeft += event.deltaY;
+  // });
 
-  popularActorDiv.addEventListener('wheel', (event) => {
-    event.preventDefault();
-    popularActorDiv.scrollLeft += event.deltaY;
-  });
+  // popularActorDiv.addEventListener('wheel', (event) => {
+  //   event.preventDefault();
+  //   popularActorDiv.scrollLeft += event.deltaY;
+  // });
 };
 
 const loadPage = async () => {

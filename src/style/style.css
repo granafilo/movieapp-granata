@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+*{
+    box-sizing: border-box;
+}
+
 body,
 html {
     min-width: 100%;

@@ -1,7 +1,7 @@
 export const getFilmCard = (title, overview, image, avgVote, data, id) => {
 
   let cardContainer = document.createElement("div");
-  cardContainer.className = "card bg-base-100 min-w-84 h-130 shadow-sm border border-grey flex flex-col  ";
+  cardContainer.className = "card bg-base-100 w-84 h-130 shadow-sm border border-grey flex flex-col shrink-0 ";
 
   let figureElement = document.createElement("figure");
   figureElement.className = "h-[40%] w-full overflow-hidden";

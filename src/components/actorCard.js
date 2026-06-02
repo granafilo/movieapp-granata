@@ -1,15 +1,28 @@
-
-
-export const getActorCard = (name, image) => {
+export const getActorCard = (name, image, gender) => {
   // Contenitore principale della card
   let cardContainer = document.createElement("div");
-  cardContainer.className = "card bg-base-100 image-full min-w-84 h-130 shadow-sm";
+  cardContainer.className = "card bg-base-100 image-full w-84 h-130 shadow-sm shrink-0 ";
 
   // Elemento Figure per l'immagine di sfondo
   let figureElement = document.createElement("figure");
 
   let imageElement = document.createElement("img");
-  imageElement.src = `https://image.tmdb.org/t/p/original/${image}`;
+
+  if (image === null) {
+    // female
+    if (gender == 1) {
+      imageElement.src = "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-36-user-female-grey-d9222f16ec16a33ed5e2c9bbdca07a4c48db14008bbebbabced8f8ed1fa2ad59.svg";
+      imageElement.className = "!object-fill !object-center"
+
+    } else {
+      // male
+      imageElement.src = "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg";
+      imageElement.className = "!object-fill !object-center"
+
+    }
+  } else {
+    imageElement.src = `https://image.tmdb.org/t/p/original/${image}`;
+  }
   imageElement.alt = `${name}`;
 
   figureElement.appendChild(imageElement);
@@ -42,15 +55,16 @@ export const getActorCard = (name, image) => {
 export const detailsActorCard = (name, role, image) => {
   // Contenitore principale della card
   let cardContainer = document.createElement("div");
-  cardContainer.className = "card w-120 h-120 shadow-sm";
+  cardContainer.className = "card w-40 h-80 shadow-sm shrink-0 flex flex-col group";
 
   // Elemento Figure per l'immagine di sfondo
   let figureElement = document.createElement("figure");
-  figureElement.className = "h-8/12 w-full";
+  figureElement.className = " w-full";
 
   let imageElement = document.createElement("img");
   imageElement.src = `https://image.tmdb.org/t/p/original/${image}`;
   imageElement.alt = `${name}`;
+  imageElement.className = "h-full w-full object-cover group-hover:scale-105 transition-all cursor-pointer"
 
   figureElement.appendChild(imageElement);
 
