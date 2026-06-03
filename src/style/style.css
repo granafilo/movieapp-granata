@@ -1,7 +1,41 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-*{
+
+@theme {
+
+    --shadow-glow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+
+
+    --color-background: #021b30;
+
+    --color-bg: var(--color-bg);
+
+    --color-primary: var(--color-primary);
+    --color-textPrimary: var(--color-textPrimary);
+    /*##0f0f0f*/
+    --color-secondary: var(--color-secondary);
+    --color-textSecondary: var(--color-textSecondary);
+
+}
+
+:root,
+.sfondo-scuro {
+    --color-primary: #032541;
+    --color-textPrimary: #fafafa;
+    --color-secondary: #eedcff;
+    --color-textSecondary: #b3acac;
+    scrollbar-color: var(--color-textPrimary) var(--color-primary)
+}
+
+.sfondo-chiaro {
+    --color-primary: #fafafa;
+    --color-textPrimary: #0f0f0f;
+    --color-textSecondary: #6c757d;
+    scrollbar-color: var(--color-textPrimary) var(--color-primary)
+}
+
+* {
     box-sizing: border-box;
 }
 
@@ -16,8 +50,19 @@ body {
     flex-direction: column;
 }
 
-@theme {
+@plugin "daisyui/theme" {
+    name: "light";
+    default: true;
 
-    --shadow-glow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    --color-secondary: #eedcff;
+}
 
+@layer components {
+    .navbar .active {
+        @apply underline underline-offset-8;
+    }
+
+    footer {
+        @apply bg-primary;
+    }
 }

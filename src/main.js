@@ -1,7 +1,7 @@
 import { getResultFromFetch, getOptions, wait } from "./utils/utils.js"
 import card from "daisyui/components/card";
-import { getActorCard } from "./components/actorCard.js"
-import {getFilmCard} from "./components/filmCard.js"
+import { createActorOverlayCard } from "./components/actorCard.js"
+import {createMovieBackdropCard} from "./components/filmCard.js"
 
 
 const loadHero = (movies) => {
@@ -17,7 +17,7 @@ const loadHero = (movies) => {
 const filmaDaGuardare = (movies) => {
   let cardWrapper = document.getElementById("watchNext");
   for (let i = 0; i < 15; i++) {
-    cardWrapper.appendChild(getFilmCard(movies[i].title, movies[i].overview, movies[i].backdrop_path, movies[i].vote_average, movies[i].release_date, movies[i].id) );
+    cardWrapper.appendChild(createMovieBackdropCard(movies[i].title, movies[i].overview, movies[i].backdrop_path, movies[i].vote_average, movies[i].release_date, movies[i].id) );
   }
 };
 
@@ -26,7 +26,7 @@ const popularActor = (actor) => {
   for (let i = 0; i < 15; i++) {
     console.log(actor[i]);
     
-    cardWrapper.appendChild(getActorCard(actor[i].name, actor[i].profile_path, actor[i].gender));
+    cardWrapper.appendChild(createActorOverlayCard(actor[i].name, actor[i].profile_path, actor[i].gender));
   }
 };
 

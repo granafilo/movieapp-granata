@@ -1,7 +1,7 @@
-export const getActorCard = (name, image, gender) => {
+export const createActorOverlayCard = (name, image, gender) => {
   // Contenitore principale della card
   let cardContainer = document.createElement("div");
-  cardContainer.className = "card bg-base-100 image-full w-84 h-130 shadow-sm shrink-0 ";
+  cardContainer.className = "card bg-white image-full w-84 h-130 shadow-sm shrink-0 ";
 
   // Elemento Figure per l'immagine di sfondo
   let figureElement = document.createElement("figure");
@@ -33,12 +33,12 @@ export const getActorCard = (name, image, gender) => {
 
   // Nome dell'attore
   let cardTitle = document.createElement("h2");
-  cardTitle.className = "card-title";
+  cardTitle.className = "card-title text-textPrimary";
   cardTitle.innerText = `${name}`;
 
   // Bottone per maggiori informazioni
   let moreInfoBtn = document.createElement("button");
-  moreInfoBtn.className = "btn btn-primary";
+  moreInfoBtn.className = "btn btn-primary rounded-full";
   moreInfoBtn.innerText = "More info!";
 
   // Appendiamo gli elementi al cardBody
@@ -52,7 +52,7 @@ export const getActorCard = (name, image, gender) => {
   return cardContainer;
 };
 
-export const detailsActorCard = (name, role, image) => {
+export const createActorStandardCard = (name, role, image) => {
   // Contenitore principale della card
   let cardContainer = document.createElement("div");
   cardContainer.className = "card w-40 h-80 shadow-sm shrink-0 flex flex-col group";
@@ -64,7 +64,7 @@ export const detailsActorCard = (name, role, image) => {
   let imageElement = document.createElement("img");
   imageElement.src = `https://image.tmdb.org/t/p/original/${image}`;
   imageElement.alt = `${name}`;
-  imageElement.className = "h-full w-full object-cover group-hover:scale-105 transition-all cursor-pointer"
+  imageElement.className = "h-full w-full object-cover group-hover:scale-105 transition-all duration-300 cursor-pointer"
 
   figureElement.appendChild(imageElement);
 
@@ -74,12 +74,13 @@ export const detailsActorCard = (name, role, image) => {
 
   // Nome dell'attore
   let cardTitle = document.createElement("h2");
-  cardTitle.className = "card-title";
+  cardTitle.className = "card-title text-textPrimary";
   cardTitle.innerText = `${name}`;
 
   // Bottone per maggiori informazioni
   let cardRole = document.createElement("p");
   cardRole.innerText = `${role}`;
+  cardRole.className = "text-textSecondary"
 
   // Appendiamo gli elementi al cardBody
   cardBody.appendChild(cardTitle);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" >
 
 <head>
     <meta charset="UTF-8">
@@ -11,44 +11,46 @@
 </head>
 
 <body>
-    <header class="max-lg:collapse bg-base-200 shadow-sm w-full rounded-md">
-        <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
-        <label for="navbar-1-toggle" class="fixed inset-0 hidden max-lg:peer-checked:block"></label>
-        <div class="collapse-title navbar">
-            <div class="navbar-start">
-                <label for="navbar-1-toggle" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h8m-8 6h16" />
-                    </svg>
-                </label>
-                <button id="headerLogo" onclick="" class="btn p-3 overflow-hidden rounded-full">
-                    <a href="/index.html" class="w-full h-full">
-                        <img src="favicon.svg" class="object-fit w-full h-full" alt="">
-                    </a>
-                </button>
-            </div>
-            <div class="navbar-end hidden lg:flex">
-                <ul class="menu menu-horizontal px-1 font-semibold text-xl">
-                    <li><a href="movies.html"><button class="rounded-full">MOVIES</button></a></li>
-                    <li><a href="serie.html"><button class="rounded-full">SERIE</button></a></li>
-                    <li><a href="profile.html"><button class="rounded-full">PROFILO</button></a></li>
-                </ul>
-            </div>
-        </div>
+    <header class="max-lg:collapse bg-primary shadow-sm w-full text-textPrimary">
+    <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
+    <label for="navbar-1-toggle" class="fixed inset-0 hidden max-lg:peer-checked:block"></label>
+    <div class="collapse-title navbar max-w-300 mx-auto my-2 p-0">
+      <div class="navbar-start">
+        <label for="navbar-1-toggle" class="btn btn-ghost lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+        </label>
+        <a href="/index.html" class="w-full h-full">
+          <button id="headerLogo" onclick=""
+            class="btn bg-primary !border-0 !shadow-none p-3 overflow-hidden rounded-full">
+            <img src="favicon.svg" class="object-fit w-full h-full" alt="">
+          </button>
+        </a>
+      </div>
+      <div class="navbar-end hidden lg:flex">
+        <ul class="menu menu-horizontal px-1 font-semibold text-xl">
+          <li class=""><a href="movies.html"><button class="rounded-full cursor-pointer">MOVIES</button></a>
+          </li>
+          <li class=""><a href="serie.html"><button class="rounded-full cursor-pointer">SERIE</button></a>
+          </li>
+          <li class=""><a href="profile.html"><button class="rounded-full cursor-pointer">PROFILO</button></a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-        <div class="collapse-content lg:hidden z-1">
-            <ul class="menupx-1 font-normal text-md">
-                <li class=""><a href="movies.html"><button class="rounded-full">MOVIES</button></a></li>
-                <li class="mt-2.5"><a href="serie.html"><button class="rounded-full">SERIE</button></a></li>
-                <li class="mt-2.5"><a href="profile.html"><button class="rounded-full">PROFILO</button></a></li>
-            </ul>
-        </div>
-    </header>
+    <div class="collapse-content lg:hidden z-1">
+      <ul class="menupx-1 font-normal text-md">
+        <li class=""><a href="movies.html"><button class="rounded-full">MOVIES</button></a></li>
+        <li class="mt-2.5"><a href="serie.html"><button class="rounded-full">SERIE</button></a></li>
+        <li class="mt-2.5"><a href="profile.html"><button class="rounded-full">PROFILO</button></a></li>
+      </ul>
+    </div>
+  </header>
     <main class="flex-1"></main>
 
-    <footer class="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+    <footer class="footer footer-horizontal footer-center bg-primary text-textSecondary p-10 border-t border-dashed">
         <nav class="grid grid-flow-col gap-4">
             <a class="link link-hover">About us</a>
             <a class="link link-hover">Contact</a>

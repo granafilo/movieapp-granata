@@ -1,5 +1,5 @@
 import { getJsonFromFetch, getOptions, getResultFromFetch, wait } from "../utils/utils.js"
-import { detailsActorCard } from "../components/actorCard.js";
+import { createActorStandardCard } from "../components/actorCard.js";
 import { getViewMoreCard } from "../components/viewMoreCard.js"
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -9,7 +9,7 @@ const id = urlParams.get("id");
 const popolaAttori = (cast) => {
     let cardWrapper = document.getElementById("popularActor");
     for (let i = 0; i < 10; i++) {
-        cardWrapper.appendChild(detailsActorCard(cast[i].name, cast[i].character, cast[i].profile_path));
+        cardWrapper.appendChild(createActorStandardCard(cast[i].name, cast[i].character, cast[i].profile_path));
     }
 
     const lastCard = getViewMoreCard();
