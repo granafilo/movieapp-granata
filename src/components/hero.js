@@ -12,8 +12,8 @@ export const loadHeroHomepage = async (movies) => {
 
     let int = 0;
     const cambiaImg = (elemento, arrayImg) => {
-        int++;
         elemento.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${arrayImg[(int % arrayImg.length)].file_path})`;
+        int++;
     };
 
     let interval;
