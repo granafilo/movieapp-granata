@@ -66,8 +66,8 @@ const loadHero = (details) => {
 };
 
 const popolaAttori = (cast) => {
-    let cardWrapper = document.getElementById("popularActor");
-    cast.slice(0, 15).forEach(attore => {
+    let cardWrapper = document.getElementById("popularActor");    
+    cast.slice(0, 15).forEach(attore => {        
         cardWrapper.appendChild(createActorStandardCard(normalizzaAttore(attore)));
     });
     if (cast.slice(0,15).length < cast.length) {

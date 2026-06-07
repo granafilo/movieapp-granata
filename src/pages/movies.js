@@ -2,11 +2,12 @@ import { createMovieBackdropCard, createMovieMinimalCard } from "../components/f
 import { getResultFromFetch, getOptions } from "../utils/utils";
 import { wait } from "../utils/utils";
 import { getViewMoreCard } from "../components/viewMoreCard";
+import { normalizzaMedia } from "../utils/normalizzaMedia";
 
 const popolaPopularMovies = (movies, idWrapper) => {
   let cardWrapper = document.getElementById(idWrapper);
   for (let i = 0; i < 15; i++) {
-    cardWrapper.appendChild(createMovieBackdropCard(movies[i].title, movies[i].overview, movies[i].backdrop_path, movies[i].vote_average, movies[i].release_date, movies[i].id));
+    cardWrapper.appendChild(createMovieBackdropCard(normalizzaMedia(movies[i])));
   }
 };
 

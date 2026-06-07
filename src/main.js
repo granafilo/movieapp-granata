@@ -1,37 +1,48 @@
 import { getResultFromFetch, getOptions, wait } from "./utils/utils.js"
 import card from "daisyui/components/card";
 import { createActorOverlayCard } from "./components/actorCard.js"
-import {createMovieBackdropCard} from "./components/filmCard.js"
+import { createMovieBackdropCard } from "./components/filmCard.js"
 import { loadHeroHomepage } from "./components/hero.js";
+import { normalizzaAttore } from "./utils/normalizzaAttore.js";
+import { normalizzaMedia } from "./utils/normalizzaMedia.js";
+import { getViewMoreCard } from "./components/viewMoreCard.js";
 
 
 
-const filmaDaGuardare = (movies) => {
+const filmaDaGuardare = (contents) => {
   let cardWrapper = document.getElementById("watchNext");
-  for (let i = 0; i < 15; i++) {
-    cardWrapper.appendChild(createMovieBackdropCard(movies[i].title, movies[i].overview, movies[i].backdrop_path, movies[i].vote_average, movies[i].release_date, movies[i].id) );
+  contents.slice(0, 15).forEach(media => {
+    cardWrapper.appendChild(createMovieBackdropCard(normalizzaMedia(media)));
+  });
+  if (contents.slice(0, 15).length < contents.length) {
+    cardWrapper.appendChild(getViewMoreCard(130));
   }
 };
 
 const popularActor = (actor) => {
   let cardWrapper = document.getElementById("popularActor");
-  for (let i = 0; i < 15; i++) {    
-    cardWrapper.appendChild(createActorOverlayCard(actor[i].name, actor[i].profile_path, actor[i].gender));
+  actor.slice(0, 15).forEach(attore => {
+    cardWrapper.appendChild(createActorOverlayCard(normalizzaAttore(attore)));
+
+  });
+
+  if (actor.slice(0, 15).length < actor.length) {
+    cardWrapper.appendChild(getViewMoreCard(130));
   }
 };
 
-const loadHomePage = async (movies, actor) => {
-  
-  await loadHeroHomepage(movies);
-  filmaDaGuardare(movies);
+const loadHomePage = async (contents, actor) => {
+
+  await loadHeroHomepage(normalizzaMedia(contents[0]));
+  filmaDaGuardare(contents);
   popularActor(actor)
 };
 
 const loadPage = async () => {
-  let movies = await getResultFromFetch("https://api.themoviedb.org/3/movie/popular?language=it-IT&page=1&region=eu", getOptions);
+  let contents = await getResultFromFetch("https://api.themoviedb.org/3/trending/all/day?language=it-IT", getOptions);
   let actor = await getResultFromFetch("https://api.themoviedb.org/3/person/popular?language=it-IT&page=1", getOptions)
 
-  await loadHomePage(movies, actor);
+  await loadHomePage(contents, actor);
 };
 
 const watchNext = document.getElementById('watchNext');
@@ -39,7 +50,7 @@ watchNext.addEventListener("click", (event) => {
   const targetElement = event.target.closest(".more-info-btn");
   if (targetElement) {
     const filmID = targetElement.dataset.idFilm;
-    window.location.href= `details.html?id=${filmID}&tipo=film`;
+    window.location.href = `details.html?id=${filmID}&tipo=film`;
   }
 });
 
@@ -52,7 +63,7 @@ let success = false;
 
 while (!success && tentativi < 5) {
   try {
-    
+
     const loading = document.getElementById('loading');
     loading.classList.remove('opacity-0');
 

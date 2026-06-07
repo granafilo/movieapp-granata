@@ -1,14 +1,20 @@
 import { getJsonFromFetch, getOptions, getResultFromFetch } from "../utils/utils";
 
-export const loadHeroHomepage = async (movies) => {
+export const loadHeroHomepage = async (media) => {
     const heroTitle = document.getElementById("heroTitle");
     const heroOverview = document.getElementById("heroOverview");
     const heroWrapper = document.getElementById("heroWrapper");
 
-    heroTitle.innerText = movies[0].title;
-    heroOverview.innerText = movies[0].overview;
+    heroTitle.innerText = media.title;
+    heroOverview.innerText = media.overview;
 
-    const backdropsArray = await getJsonFromFetch(`https://api.themoviedb.org/3/movie/${movies[0].id}/images?language=en-US`, getOptions);
+    const backdropsArray = await getJsonFromFetch(`https://api.themoviedb.org/3/movie/${media.id}/images?language=en-US`, getOptions);
+
+    console.log(backdropsArray);
+    
+    console.log(media);
+    
+    
 
     let int = 0;
     const cambiaImg = (elemento, arrayImg) => {

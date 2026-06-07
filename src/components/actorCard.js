@@ -1,4 +1,4 @@
-export const createActorOverlayCard = (name, image, gender) => {
+export const createActorOverlayCard = (attore) => {
   // Contenitore principale della card
   let cardContainer = document.createElement("div");
   cardContainer.className = "card bg-white image-full w-84 h-130 shadow-sm shrink-0 ";
@@ -8,7 +8,7 @@ export const createActorOverlayCard = (name, image, gender) => {
 
   let imageElement = document.createElement("img");
 
-  if (image === null) {
+  if (attore.profile_path === null) {
     // female
     if (gender == 1) {
       imageElement.src = "https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-36-user-female-grey-d9222f16ec16a33ed5e2c9bbdca07a4c48db14008bbebbabced8f8ed1fa2ad59.svg";
@@ -21,9 +21,9 @@ export const createActorOverlayCard = (name, image, gender) => {
 
     }
   } else {
-    imageElement.src = `https://image.tmdb.org/t/p/original/${image}`;
+    imageElement.src = `https://image.tmdb.org/t/p/original/${attore.profile_path}`;
   }
-  imageElement.alt = `${name}`;
+  imageElement.alt = `${attore.nome}`;
 
   figureElement.appendChild(imageElement);
 
@@ -34,7 +34,7 @@ export const createActorOverlayCard = (name, image, gender) => {
   // Nome dell'attore
   let cardTitle = document.createElement("h2");
   cardTitle.className = "card-title text-textPrimary";
-  cardTitle.innerText = `${name}`;
+  cardTitle.innerText = `${attore.nome}`;
 
   // Bottone per maggiori informazioni
   let moreInfoBtn = document.createElement("button");

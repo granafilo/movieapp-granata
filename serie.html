@@ -11,119 +11,134 @@
 </head>
 
 <body>
-    <header class="max-lg:collapse bg-primary shadow-sm w-full text-textPrimary">
-        <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
-        <label for="navbar-1-toggle" class="fixed inset-0 hidden max-lg:peer-checked:block"></label>
-        <div class="collapse-title navbar max-w-300 mx-auto my-2 p-0">
-            <div class="navbar-start">
-                <label for="navbar-1-toggle" class="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h8m-8 6h16" />
-                    </svg>
-                </label>
-                <a href="/index.html" class="w-full h-full">
-                    <button id="headerLogo" onclick=""
-                        class="btn bg-primary !border-0 !shadow-none py-2 px-0 overflow-hidden ">
-                        <img src="favicon.svg" class="object-fit w-full h-full" alt="">
-                    </button>
-                </a>
+    <div class="drawer drawer-end">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content bg-primary w-full flex flex-col">
+            <!-- Navbar -->
+            <div class="navbar  flex justify-between w-full max-w-300 mx-auto text-textPrimary">
+                <!-- navbar logo -->
+                <div class="navbar-start">
+                    <a href="/index.html" class="w-full h-full">
+                        <button id="headerLogo" onclick=""
+                            class="btn bg-primary !border-0 !shadow-none p-3 overflow-hidden rounded-full">
+                            <img src="favicon.svg" class="object-fit w-full h-full" alt="">
+                        </button>
+                    </a>
+                </div>
+                <!-- navbar options -->
+                <div class="navbar-end hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1 font-semibold text-xl">
+                        <li class=""><a href="movies.html"><button
+                                    class="rounded-full cursor-pointer">MOVIES</button></a>
+                        </li>
+                        <li class=""><a href="serie.html"><button
+                                    class="rounded-full cursor-pointer active">SERIE</button></a>
+                        </li>
+                        <li class=""><a href="profile.html"><button
+                                    class="rounded-full cursor-pointer">PROFILO</button></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- hamburger menu -->
+                <div class="flex-none lg:hidden">
+                    <label for="my-drawer-2" aria-label="open sidebar" class="btn btn-square btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            class="inline-block h-6 w-6 stroke-current">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </label>
+                </div>
             </div>
-            <div class="navbar-end hidden lg:flex">
-                <ul class="menu menu-horizontal p-0 font-semibold text-xl">
-                    <li class=""><a href="movies.html"><button class="rounded-full cursor-pointer">MOVIES</button></a>
-                    </li>
-                    <li class=""><a href="serie.html"><button class="rounded-full cursor-pointer">SERIE</button></a>
-                    </li>
-                    <li class=""><a href="profile.html"><button class="rounded-full cursor-pointer">PROFILO</button></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+            <main class="flex-1">
 
-        <div class="collapse-content lg:hidden z-1">
-            <ul class="menupx-1 font-normal text-md">
+                <section class="px-3 py-8 sfondo-chiaro bg-primary">
+                    <div class="mx-auto max-w-300 flex flex-col items-center">
+                        <h2 class="font-bold text-2xl text-textPrimary w-full">Popular Movies!</h2>
+                        <!-- main container -->
+                        <div class="w-full flex">
+                            <div class="w-64 mt-5">
+                                <label for="seriesListFilter" class="text-textPrimary font-semibold">Change Serie Tv
+                                    List</label>
+                                <select id="seriesListFilter" class="select bg-textPrimary text-primary">
+                                    <option disabled>Change Serie Tv List</option>
+                                    <option selected value="popular">Popular</option>
+                                    <option value="on_the_air">On The Air</option>
+                                    <option value="airing_today">Airing Today</option>
+                                    <option value="top_rated">Top Rated</option>
+                                </select>
+                            </div>
+                            <div id="popularseries"
+                                class=" flex-1 gap-5 mt-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                            </div>
+                        </div>
+                        <!-- container slider -->
+
+                        <div class="w-full join grid grid-cols-2">
+                            <button id="prevPage" class="join-item btn btn-outline text-textPrimary bg-primary">Previous
+                                page</button>
+                            <button id="nextPage"
+                                class="join-item btn btn-outline text-textPrimary bg-primary">Next</button>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <footer
+                class="footer footer-horizontal footer-center bg-primary text-textSecondary p-10 border-t border-dashed">
+                <nav class="grid grid-flow-col gap-4">
+                    <a class="link link-hover">About us</a>
+                    <a class="link link-hover">Contact</a>
+                    <a class="link link-hover">Jobs</a>
+                    <a class="link link-hover">Press kit</a>
+                </nav>
+                <nav>
+                    <div class="grid grid-flow-col gap-4">
+                        <a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                class="fill-current">
+                                <path
+                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                class="fill-current">
+                                <path
+                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                class="fill-current">
+                                <path
+                                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </nav>
+                <aside>
+                    <p>Copyright © 2026 - All right reserved by ACME Industries Ltd</p>
+                </aside>
+            </footer>
+
+            <span id="loading"
+                class="loading loading-spinner fixed w-30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all opacity-0 duration-300 cursor-none"></span>
+        </div>
+        <div class="drawer-side">
+            <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+            <ul class="menu px-1 w-3/12 font-normal text-md h-screen bg-primary">
                 <li class=""><a href="movies.html"><button class="rounded-full">MOVIES</button></a></li>
                 <li class="mt-2.5"><a href="serie.html"><button class="rounded-full">SERIE</button></a></li>
                 <li class="mt-2.5"><a href="profile.html"><button class="rounded-full">PROFILO</button></a></li>
             </ul>
         </div>
-    </header>
-    <main class="flex-1">
+    </div>
 
-        <section class="px-3 py-8 sfondo-chiaro bg-primary">
-            <div class="mx-auto max-w-300 flex flex-col items-center">
-                <h2 class="font-bold text-2xl text-textPrimary w-full">Popular Movies!</h2>
-                <!-- main container -->
-                <div class="w-full flex">
-                    <div class="w-64 mt-5">
-                        <label for="seriesListFilter" class="text-textPrimary font-semibold">Change Serie Tv List</label>
-                        <select id="seriesListFilter" class="select bg-textPrimary text-primary">
-                            <option disabled>Change Serie Tv List</option>
-                            <option selected value="popular">Popular</option>
-                            <option value="on_the_air">On The Air</option>
-                            <option value="airing_today">Airing Today</option>
-                            <option value="top_rated">Top Rated</option>
-                        </select>
-                    </div>
-                    <div id="popularseries"
-                        class=" flex-1 gap-5 mt-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
-                    </div>
-                </div>
-                <!-- container slider -->
-
-                <div class="w-full join grid grid-cols-2">
-                    <button id="prevPage" class="join-item btn btn-outline text-textPrimary bg-primary">Previous
-                        page</button>
-                    <button id="nextPage" class="join-item btn btn-outline text-textPrimary bg-primary">Next</button>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer footer-horizontal footer-center bg-primary text-textSecondary p-10 border-t border-dashed">
-        <nav class="grid grid-flow-col gap-4">
-            <a class="link link-hover">About us</a>
-            <a class="link link-hover">Contact</a>
-            <a class="link link-hover">Jobs</a>
-            <a class="link link-hover">Press kit</a>
-        </nav>
-        <nav>
-            <div class="grid grid-flow-col gap-4">
-                <a>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        class="fill-current">
-                        <path
-                            d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
-                        </path>
-                    </svg>
-                </a>
-                <a>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        class="fill-current">
-                        <path
-                            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
-                        </path>
-                    </svg>
-                </a>
-                <a>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                        class="fill-current">
-                        <path
-                            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
-                        </path>
-                    </svg>
-                </a>
-            </div>
-        </nav>
-        <aside>
-            <p>Copyright © 2026 - All right reserved by ACME Industries Ltd</p>
-        </aside>
-    </footer>
-
-    <span id="loading" class="loading loading-spinner fixed w-30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all opacity-0 duration-300 cursor-none"></span>
 
     <script src="./src/pages/series.js" type="module"></script>
 </body>

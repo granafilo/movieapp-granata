@@ -1,9 +1,9 @@
-export const getViewMoreCard = () => {
+export const getViewMoreCard = (height) => {
     const lastCard = document.createElement("div");
-    lastCard.className = " card w-35 h-80 shrink-0 flex !flex-row p-2 items-center justify-center gap-2 shadow-lg";
+    lastCard.className = `card w-35 h-${height} shrink-0 flex !flex-row p-2 items-center justify-center gap-2 shadow-lg`;
 
     const title = document.createElement("h2");
-    title.className = "font-bold text-lg hover:underline hover:cursor-pointer";
+    title.className = "text-textPrimary font-bold text-lg hover:underline hover:cursor-pointer";
     title.innerText = "Visualizza Altro"
 
     const arrowGlyph = document.createElement("img");

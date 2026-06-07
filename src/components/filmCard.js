@@ -1,4 +1,4 @@
-export const createMovieBackdropCard = (title, overview, image, avgVote, data, id) => {
+export const createMovieBackdropCard = (media) => {
 
   let cardContainer = document.createElement("div");
   cardContainer.className = "card bg-white w-84 h-130 shadow-sm border border-grey flex flex-col shrink-0 ";
@@ -8,8 +8,8 @@ export const createMovieBackdropCard = (title, overview, image, avgVote, data, i
 
   let imageElement = document.createElement("img");
   imageElement.className = "w-full h-full object-cover hover:scale-110 duration-300";
-  imageElement.src = `https://image.tmdb.org/t/p/original/${image}`;
-  imageElement.alt = `${title}`
+  imageElement.src = `https://image.tmdb.org/t/p/original/${media.image}`;
+  imageElement.alt = `${media.title}`
 
   figureElement.appendChild(imageElement);
 
@@ -17,7 +17,7 @@ export const createMovieBackdropCard = (title, overview, image, avgVote, data, i
   cardBody.className = "card-body h-[60%] flex flex-col justify-between p-4";
 
   let cardTitle = document.createElement("h2");
-  cardTitle.innerText = `${title}`;
+  cardTitle.innerText = `${media.title}`;
   cardTitle.className = "card-title text-lg font-bold text-textPrimary shrink-0 mb-2";
 
   let filmInfoContainer = document.createElement("div");
@@ -25,12 +25,12 @@ export const createMovieBackdropCard = (title, overview, image, avgVote, data, i
 
   let dataUscitaBadge = document.createElement("div");
   dataUscitaBadge.className = "badge badge-neutral text-textSecondary badge-outline";
-  dataUscitaBadge.innerText = `${data}`;
+  dataUscitaBadge.innerText = `${media.data}`;  
 
   let rankFilm = document.createElement("div");
 
-  rankFilm.className = `badge ${colorBadge(avgVote.toFixed(1))}`;
-  rankFilm.innerText = `${avgVote.toFixed(1)}`;
+  rankFilm.className = `badge ${colorBadge((media.avgVote).toFixed(1))}`;
+  rankFilm.innerText = `${media.avgVote.toFixed(1)}`;
 
   filmInfoContainer.appendChild(dataUscitaBadge);
   filmInfoContainer.appendChild(rankFilm);
@@ -39,7 +39,7 @@ export const createMovieBackdropCard = (title, overview, image, avgVote, data, i
   overviewWrapper.className = "flex-1 min-h-0 overflow-hidden mb-4";
   let overviewText = document.createElement("p");
   overviewText.className = "text-sm text-textSecondary overflow-hidden line-clamp-5";
-  overviewText.innerText = `${overview}`;
+  overviewText.innerText = `${media.overview}`;
 
   overviewWrapper.appendChild(overviewText);
 
@@ -53,7 +53,7 @@ export const createMovieBackdropCard = (title, overview, image, avgVote, data, i
   let moreInfoBtn = document.createElement("button");
   moreInfoBtn.className = "btn btn-ghost btn-sm font-semibold text-textSecondary shadow-lg more-info-btn";
   moreInfoBtn.innerText = "More Info!"
-  moreInfoBtn.dataset.idFilm = id;
+  moreInfoBtn.dataset.idFilm = media.id;
 
   cardActionWrapper.appendChild(watchBtn);
   cardActionWrapper.appendChild(moreInfoBtn);
