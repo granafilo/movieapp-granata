@@ -6,14 +6,12 @@
 
     --shadow-glow: 0 0 10px #FFD700, 0 0 20px #FFD700;
 
-
     --color-background: #021b30;
 
     --color-bg: var(--color-bg);
 
     --color-primary: var(--color-primary);
     --color-textPrimary: var(--color-textPrimary);
-    /*##0f0f0f*/
     --color-secondary: var(--color-secondary);
     --color-textSecondary: var(--color-textSecondary);
 
@@ -33,6 +31,12 @@
     --color-textPrimary: #0f0f0f;
     --color-textSecondary: #6c757d;
     scrollbar-color: var(--color-textPrimary) var(--color-primary)
+}
+
+@layer components{
+    .sfondo-chiaro button:disabled {
+        @apply !border-gray-200;
+    }
 }
 
 * {

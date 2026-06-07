@@ -53,7 +53,7 @@ export const createMovieBackdropCard = (title, overview, image, avgVote, data, i
   let moreInfoBtn = document.createElement("button");
   moreInfoBtn.className = "btn btn-ghost btn-sm font-semibold text-textSecondary shadow-lg more-info-btn";
   moreInfoBtn.innerText = "More Info!"
-  moreInfoBtn.dataset.idFilm = `${id}`;
+  moreInfoBtn.dataset.idFilm = id;
 
   cardActionWrapper.appendChild(watchBtn);
   cardActionWrapper.appendChild(moreInfoBtn);
@@ -81,7 +81,7 @@ const colorBadge = (voto) => {
   }
 };
 
-export const createMovieMinimalCard = (title, data, image) => {
+export const createMovieMinimalCard = (title, data, image, id, tipo) => {
 
   const dataUscita1 = new Date(data);
 
@@ -90,7 +90,9 @@ export const createMovieMinimalCard = (title, data, image) => {
 
 
   let cardContainer = document.createElement("div");
-  cardContainer.className = "card w-40 h-auto shrink-0 group cursor-pointer transition-all duration-300"
+  cardContainer.className = "card w-50 h-auto shrink-0 group cursor-pointer transition-all duration-300 shadow-lg more-info"
+  cardContainer.dataset.idFilm = id;
+  cardContainer.dataset.type = tipo
 
   let figureElement = document.createElement("figure");
   figureElement.className = "w-full overflow-hidden rounded-lg";
@@ -104,7 +106,7 @@ export const createMovieMinimalCard = (title, data, image) => {
 
 
   let cardBody = document.createElement("div");
-  cardBody.className = "card-body p-[10px_0_0_0]";
+  cardBody.className = "card-body p-[10px_5px_5px_5px] ";
 
   let cardTitle = document.createElement("h2");
   cardTitle.innerText = `${title}`;

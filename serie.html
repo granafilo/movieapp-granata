@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Serie TV</title>
     <link rel="stylesheet" href="src/style/style.css">
 
 </head>
@@ -25,13 +25,13 @@
                 </label>
                 <a href="/index.html" class="w-full h-full">
                     <button id="headerLogo" onclick=""
-                        class="btn bg-primary !border-0 !shadow-none p-3 overflow-hidden rounded-full">
+                        class="btn bg-primary !border-0 !shadow-none py-2 px-0 overflow-hidden ">
                         <img src="favicon.svg" class="object-fit w-full h-full" alt="">
                     </button>
                 </a>
             </div>
             <div class="navbar-end hidden lg:flex">
-                <ul class="menu menu-horizontal px-1 font-semibold text-xl">
+                <ul class="menu menu-horizontal p-0 font-semibold text-xl">
                     <li class=""><a href="movies.html"><button class="rounded-full cursor-pointer">MOVIES</button></a>
                     </li>
                     <li class=""><a href="serie.html"><button class="rounded-full cursor-pointer">SERIE</button></a>
@@ -50,7 +50,38 @@
             </ul>
         </div>
     </header>
-    <main class="flex-1"></main>
+    <main class="flex-1">
+
+        <section class="px-3 py-8 sfondo-chiaro bg-primary">
+            <div class="mx-auto max-w-300 flex flex-col items-center">
+                <h2 class="font-bold text-2xl text-textPrimary w-full">Popular Movies!</h2>
+                <!-- main container -->
+                <div class="w-full flex">
+                    <div class="w-64 mt-5">
+                        <label for="seriesListFilter" class="text-textPrimary font-semibold">Change Serie Tv List</label>
+                        <select id="seriesListFilter" class="select bg-textPrimary text-primary">
+                            <option disabled>Change Serie Tv List</option>
+                            <option selected value="popular">Popular</option>
+                            <option value="on_the_air">On The Air</option>
+                            <option value="airing_today">Airing Today</option>
+                            <option value="top_rated">Top Rated</option>
+                        </select>
+                    </div>
+                    <div id="popularseries"
+                        class=" flex-1 gap-5 mt-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                    </div>
+                </div>
+                <!-- container slider -->
+
+                <div class="w-full join grid grid-cols-2">
+                    <button id="prevPage" class="join-item btn btn-outline text-textPrimary bg-primary">Previous
+                        page</button>
+                    <button id="nextPage" class="join-item btn btn-outline text-textPrimary bg-primary">Next</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <footer class="footer footer-horizontal footer-center bg-primary text-textSecondary p-10 border-t border-dashed">
         <nav class="grid grid-flow-col gap-4">
@@ -92,6 +123,9 @@
         </aside>
     </footer>
 
+    <span id="loading" class="loading loading-spinner fixed w-30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all opacity-0 duration-300 cursor-none"></span>
+
+    <script src="./src/pages/series.js" type="module"></script>
 </body>
 
 </html>

@@ -39,7 +39,7 @@ watchNext.addEventListener("click", (event) => {
   const targetElement = event.target.closest(".more-info-btn");
   if (targetElement) {
     const filmID = targetElement.dataset.idFilm;
-    window.location.href= `details.html?id=${filmID}`;
+    window.location.href= `details.html?id=${filmID}&tipo=film`;
   }
 });
 
@@ -52,7 +52,14 @@ let success = false;
 
 while (!success && tentativi < 5) {
   try {
+    
+    const loading = document.getElementById('loading');
+    loading.classList.remove('opacity-0');
+
     await loadPage();
+
+    loading.classList.add("opacity-0");
+
     success = true;
   } catch (error) {
     tentativi++;

@@ -1,43 +1,37 @@
 import { getJsonFromFetch, getOptions, getResultFromFetch, wait } from "../utils/utils.js"
 import { createActorStandardCard } from "../components/actorCard.js";
 import { getViewMoreCard } from "../components/viewMoreCard.js"
+import { normalizzaAttore } from "../utils/normalizzaAttore.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 
 const id = urlParams.get("id");
+const contentType = urlParams.get("tipo");
 
-const popolaAttori = (cast) => {
-    let cardWrapper = document.getElementById("popularActor");
-    for (let i = 0; i < 10; i++) {
-        cardWrapper.appendChild(createActorStandardCard(cast[i].name, cast[i].character, cast[i].profile_path, cast[i].gender));
-    }
-
-    const lastCard = getViewMoreCard();
-    cardWrapper.appendChild(lastCard)
-};
-
-
-const loadHero = (filmDetails) => {
+const loadHero = (details) => {
+    const tipo = contentType == "film";
     const heroTitle = document.getElementById("heroTitle");
-    // const heroOverview = document.getElementById("heroOverview");
+
     const heroBackground = document.getElementById("heroOverlay");
     const heroPosterWrapper = document.getElementById("posterWrapper")
     const heroOverview = document.getElementById("heroOverview");
     const movieInfo = document.getElementById("movieInfo");
+    const valutazione = document.getElementById("valutazione");
+    const valutazioneValue = document.getElementById("valutazioneValue");
 
     const heroPoster = document.createElement("img");
-    heroPoster.src = `https://image.tmdb.org/t/p/original${filmDetails.poster_path}`;
+    heroPoster.src = `https://image.tmdb.org/t/p/original${details.poster_path}`;
     heroPoster.className = "rounded-2xl h-full";
 
     heroPosterWrapper.appendChild(heroPoster);
 
-    // Hero title
-    heroTitle.innerText = filmDetails.title;
+    heroTitle.innerText = tipo ? details.title : details.name;
 
-    const data = new Date(filmDetails.release_date);
+    const data = new Date(tipo ? details.release_date : details.first_air_date);
 
     const annoUscita = document.createElement("span");
     annoUscita.innerText = " (" + data.getFullYear() + ") ";
+    document.title += " - " + data.getFullYear()
     annoUscita.className = "!text-grey-100 font-normal"
 
     heroTitle.appendChild(annoUscita);
@@ -50,54 +44,56 @@ const loadHero = (filmDetails) => {
     movieInfo.appendChild(annoUscitaCompleto)
 
     const genere = document.createElement("div");
-    const stringaGeneri = filmDetails.genres.map(genere => genere.name).join(", ")
+    const stringaGeneri = details.genres.map(genere => genere.name).join(", ")
     genere.innerText = stringaGeneri;
     genere.className = "flex items-center gap-2 after:content-['•'] last:after:hidden"
 
     movieInfo.appendChild(genere);
 
-    const durata = document.createElement("div");
-    durata.innerText = Math.floor(filmDetails.runtime / 60) + "h " + filmDetails.runtime % 60 + "m"
-    durata.className = "flex items-center gap-2 after:content-['•'] last:after:hidden";
+    if (tipo) {
+        const durata = document.createElement("div");
+        durata.innerText = Math.floor(details.runtime / 60) + "h " + details.runtime % 60 + "m"
+        durata.className = "flex items-center gap-2 after:content-['•'] last:after:hidden";
+        movieInfo.appendChild(durata);
+    }
+    const voto = details.vote_average.toFixed(1) * 10;
 
-    movieInfo.appendChild(durata);
+    valutazione.style.setProperty("--value", voto);
+    valutazioneValue.innerText = voto + "%";
+    valutazione.setAttribute("aria-valuenow", voto);
 
-    updateRatingCircle(filmDetails.vote_average);
+    heroOverview.innerText = details.overview;
+};
 
-
-    //Hero overview
-    heroOverview.innerText = filmDetails.overview;
-
-    // heroBackground.style.backgroundImage = backdropStyle(filmDetails.backdrop_path);
+const popolaAttori = (cast) => {
+    let cardWrapper = document.getElementById("popularActor");
+    cast.slice(0, 15).forEach(attore => {
+        cardWrapper.appendChild(createActorStandardCard(normalizzaAttore(attore)));
+    });
+    if (cast.slice(0,15).length < cast.length) {
+        cardWrapper.appendChild(getViewMoreCard());
+    }
 };
 
 const loadPage = async () => {
-    const objectDetails = await getJsonFromFetch(`https://api.themoviedb.org/3/movie/${id}?language=it-IT`, getOptions);
-    const credits = await getJsonFromFetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`, getOptions);
-
-    document.title = objectDetails.title;
+    let objectDetails = {};
+    let credits = [];
+    if (contentType == "film") {
+        objectDetails = await getJsonFromFetch(`https://api.themoviedb.org/3/movie/${id}?language=it-IT`, getOptions);
+        credits = await getJsonFromFetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`, getOptions);
+        document.title = objectDetails.title ;
+    } else if (contentType == "serie") {
+        objectDetails = await getJsonFromFetch(`https://api.themoviedb.org/3/tv/${id}?language=it-IT`, getOptions);
+        credits = await getJsonFromFetch(`https://api.themoviedb.org/3/tv/${id}/aggregate_credits?language=en-US`, getOptions);
+        document.title = objectDetails.name ;
+        
+        credits = credits;
+    }
 
     loadHero(objectDetails);
     popolaAttori(credits.cast);
 
 };
-
-function updateRatingCircle(voteAverage) {
-    // Se TMDB ti dà ad esempio 7.9, lo moltiplichiamo per 10 per avere 79%
-    const percentage = Math.floor(voteAverage * 10);
-
-    const cerchioProgress = document.getElementById('movie-progress');
-    const voto = document.getElementById('movie-rating-text');
-
-    const radius = cerchioProgress.r.baseVal.value;
-    const circumference = 2 * Math.PI * radius;
-
-    cerchioProgress.style.strokeDasharray = `${circumference} ${circumference}`;
-    const offset = circumference - (percentage / 100) * circumference;
-
-    cerchioProgress.style.strokeDashoffset = offset;
-    voto.innerText = percentage;
-}
 
 let tentativi = 0;
 let delayStandard = 1000;
@@ -105,7 +101,10 @@ let success = false;
 
 while (!success && tentativi < 5) {
     try {
+        const loading = document.getElementById('loading');
+        loading.classList.remove('opacity-0');
         await loadPage();
+        loading.classList.add("opacity-0");
         success = true;
     } catch (error) {
         tentativi++;
@@ -114,4 +113,3 @@ while (!success && tentativi < 5) {
         await wait(delayStandard * tentativi);
     }
 }
-
