@@ -9,7 +9,7 @@ const id = urlParams.get("id");
 const popolaAttori = (cast) => {
     let cardWrapper = document.getElementById("popularActor");
     for (let i = 0; i < 10; i++) {
-        cardWrapper.appendChild(createActorStandardCard(cast[i].name, cast[i].character, cast[i].profile_path));
+        cardWrapper.appendChild(createActorStandardCard(cast[i].name, cast[i].character, cast[i].profile_path, cast[i].gender));
     }
 
     const lastCard = getViewMoreCard();

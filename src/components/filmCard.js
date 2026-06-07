@@ -73,7 +73,7 @@ const colorBadge = (voto) => {
   if (voto < 6) {
     return "badge-error";
   } else if (voto < 7.5) {
-    return "bg-[#87bfec]";
+    return "bg-[#87bfec] border-0";
   } else if (voto < 9.5) {
     return "badge-success";
   } else {

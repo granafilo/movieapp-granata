@@ -2,17 +2,9 @@ import { getResultFromFetch, getOptions, wait } from "./utils/utils.js"
 import card from "daisyui/components/card";
 import { createActorOverlayCard } from "./components/actorCard.js"
 import {createMovieBackdropCard} from "./components/filmCard.js"
+import { loadHeroHomepage } from "./components/hero.js";
 
 
-const loadHero = (movies) => {
-  const heroTitle = document.getElementById("heroTitle");
-  const heroOverview = document.getElementById("heroOverview");
-  const heroWrapper = document.getElementById("heroWrapper");
-
-  heroTitle.innerText = movies[0].title;
-  heroOverview.innerText = movies[0].overview;
-  heroWrapper.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${movies[0].backdrop_path})`;
-};
 
 const filmaDaGuardare = (movies) => {
   let cardWrapper = document.getElementById("watchNext");
@@ -23,37 +15,23 @@ const filmaDaGuardare = (movies) => {
 
 const popularActor = (actor) => {
   let cardWrapper = document.getElementById("popularActor");
-  for (let i = 0; i < 15; i++) {
-    console.log(actor[i]);
-    
+  for (let i = 0; i < 15; i++) {    
     cardWrapper.appendChild(createActorOverlayCard(actor[i].name, actor[i].profile_path, actor[i].gender));
   }
 };
 
-const loadHomePage = (movies, actor) => {
+const loadHomePage = async (movies, actor) => {
   
-  loadHero(movies);
+  await loadHeroHomepage(movies);
   filmaDaGuardare(movies);
   popularActor(actor)
-
-  // const watchNext = document.getElementById('watchNext');
-  // const popularActorDiv = document.getElementById('popularActor');
-  // watchNext.addEventListener('wheel', (event) => {
-  //   event.preventDefault();
-  //   watchNext.scrollLeft += event.deltaY;
-  // });
-
-  // popularActorDiv.addEventListener('wheel', (event) => {
-  //   event.preventDefault();
-  //   popularActorDiv.scrollLeft += event.deltaY;
-  // });
 };
 
 const loadPage = async () => {
   let movies = await getResultFromFetch("https://api.themoviedb.org/3/movie/popular?language=it-IT&page=1&region=eu", getOptions);
   let actor = await getResultFromFetch("https://api.themoviedb.org/3/person/popular?language=it-IT&page=1", getOptions)
 
-  loadHomePage(movies, actor);
+  await loadHomePage(movies, actor);
 };
 
 const watchNext = document.getElementById('watchNext');
@@ -63,7 +41,6 @@ watchNext.addEventListener("click", (event) => {
     const filmID = targetElement.dataset.idFilm;
     window.location.href= `details.html?id=${filmID}`;
   }
-  
 });
 
 
