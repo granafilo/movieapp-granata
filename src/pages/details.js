@@ -62,7 +62,7 @@ const loadHero = (details) => {
     valutazioneValue.innerText = voto + "%";
     valutazione.setAttribute("aria-valuenow", voto);
 
-    heroOverview.innerText = details.overview;
+    heroOverview.innerText = details.overview || "Descrizione non disponibile nella lingua selezionata";
 };
 
 const popolaAttori = (cast) => {

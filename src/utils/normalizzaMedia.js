@@ -5,6 +5,7 @@ export const normalizzaMedia = (media) => {
         overview: media.overview || "Descrizione non disponibile nella lingua selezionata",
         image: media.backdrop_path,
         data: media.release_date,
-        avgVote: media.vote_average
+        avgVote: media.vote_average,
+        mediaType: media.media_type
     };
 };

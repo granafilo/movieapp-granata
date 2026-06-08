@@ -32,7 +32,9 @@ const popularActor = (actor) => {
 };
 
 const loadHomePage = async (contents, actor) => {
-
+  // console.log(contents[0]);
+  // console.log(contents);
+  
   await loadHeroHomepage(normalizzaMedia(contents[0]));
   filmaDaGuardare(contents);
   popularActor(actor)
