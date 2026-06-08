@@ -11,7 +11,7 @@ import { getViewMoreCard } from "./components/viewMoreCard.js";
 
 const filmaDaGuardare = (contents) => {
   let cardWrapper = document.getElementById("watchNext");
-  contents.slice(0, 15).forEach(media => {
+  contents.slice(0, 15).forEach(media => {    
     cardWrapper.appendChild(createMovieBackdropCard(normalizzaMedia(media)));
   });
   if (contents.slice(0, 15).length < contents.length) {
@@ -32,9 +32,6 @@ const popularActor = (actor) => {
 };
 
 const loadHomePage = async (contents, actor) => {
-  // console.log(contents[0]);
-  // console.log(contents);
-  
   await loadHeroHomepage(normalizzaMedia(contents[0]));
   filmaDaGuardare(contents);
   popularActor(actor)

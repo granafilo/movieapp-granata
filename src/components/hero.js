@@ -11,10 +11,8 @@ export const loadHeroHomepage = async (media) => {
     heroOverview.innerText = media.overview;
 
     let backdropsArray = await getJsonFromFetch(`https://api.themoviedb.org/3/${type}/${media.id}/images`, getOptions);
-    
-    backdropsArray = backdropsArray.backdrops?.[0] ? backdropsArray.backdrops : backdropsArray.posters;
 
-    heroWrapper.style.backgroundImage = ``
+    backdropsArray = backdropsArray.backdrops?.[0] ? backdropsArray.backdrops : backdropsArray.posters;
 
     let int = 0;
     
@@ -30,7 +28,7 @@ export const loadHeroHomepage = async (media) => {
     cambiaImg(heroWrapper, backdropsArray)
 
     interval = setInterval(() => {
-        cambiaImg(heroWrapper, )
+        cambiaImg(heroWrapper, backdropsArray);
     }, 10000);
 };
 

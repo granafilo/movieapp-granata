@@ -6,29 +6,39 @@ import { normalizzaMedia } from "../utils/normalizzaMedia";
 
 const popolaPopularMovies = (movies, idWrapper) => {
   let cardWrapper = document.getElementById(idWrapper);
-  for (let i = 0; i < 15; i++) {
-    cardWrapper.appendChild(createMovieBackdropCard(normalizzaMedia(movies[i])));
+
+  movies.slice(0, 15).forEach(film => {
+    cardWrapper.appendChild(createMovieBackdropCard(normalizzaMedia(film)));
+  });
+
+  if (movies.slice(0, 15).length < movies.length) {
+    cardWrapper.appendChild(getViewMoreCard(130));
   }
 };
 
 const popolaTopRatedMovies = (movies, idWrapper) => {
   let cardWrapper = document.getElementById(idWrapper);
-  for (let i = 0; i < 15; i++) {
-    cardWrapper.appendChild(createMovieMinimalCard(movies[i].title, movies[i].release_date, movies[i].poster_path, movies[i].id));
+
+  movies.slice(0, 15).forEach(film => {
+    cardWrapper.appendChild(createMovieMinimalCard(normalizzaMedia(film)));
+  });
+
+  if (movies.slice(0, 15).length < movies.length) {
+    cardWrapper.appendChild(getViewMoreCard("auto"));
   }
 };
 
 
-const loadHomePage = (movies, actor) => {
+const loadHomePage = (movies, topRated) => {
   popolaPopularMovies(movies, "popularMovies");
-  popolaTopRatedMovies(actor, "topRatedMovies")
+  popolaTopRatedMovies(topRated, "topRatedMovies")
 };
 
 const loadPage = async () => {
   let moviesPopular = await getResultFromFetch("https://api.themoviedb.org/3/movie/popular?language=it-IT&page=1&region=eu", getOptions);
-  let actor = await getResultFromFetch('https://api.themoviedb.org/3/movie/top_rated?language=it-IT&page=1&region=eu', getOptions)
+  let topRated = await getResultFromFetch('https://api.themoviedb.org/3/movie/top_rated?language=it-IT&page=1&region=eu', getOptions)
 
-  loadHomePage(moviesPopular, actor);
+  loadHomePage(moviesPopular, topRated);
 };
 
 const watchNext = document.getElementById('popularMovies');
@@ -42,10 +52,12 @@ watchNext.addEventListener("click", (event) => {
 
 const topRatedMovies = document.getElementById('topRatedMovies');
 topRatedMovies.addEventListener("click", (event) => {
-  const targetElement = event.target.closest(".more-info-btn");
+  const targetElement = event.target.closest(".more-info");
+  console.log(targetElement);
+
   if (targetElement) {
     const filmID = targetElement.dataset.idFilm;
-    window.location.href = `details.html?id=${filmID}`;
+    window.location.href = `details.html?id=${filmID}&tipo=film`;
   }
 });
 

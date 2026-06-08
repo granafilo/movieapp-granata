@@ -8,6 +8,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
 const contentType = urlParams.get("tipo");
 
+
 const loadHero = (details) => {
     const tipo = contentType == "film";
     const heroTitle = document.getElementById("heroTitle");
@@ -44,6 +45,7 @@ const loadHero = (details) => {
     movieInfo.appendChild(annoUscitaCompleto)
 
     const genere = document.createElement("div");
+    
     const stringaGeneri = details.genres.map(genere => genere.name).join(", ")
     genere.innerText = stringaGeneri;
     genere.className = "flex items-center gap-2 after:content-['•'] last:after:hidden"
@@ -89,7 +91,7 @@ const loadPage = async () => {
         
         credits = credits;
     }
-
+    
     loadHero(objectDetails);
     popolaAttori(credits.cast);
 

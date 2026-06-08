@@ -1,6 +1,7 @@
 // fetch('https://api.themoviedb.org/3/tv/popular?language=it-IT&page=1', options)
 
 import { createMovieMinimalCard } from "../components/filmCard";
+import { normalizzaMedia } from "../utils/normalizzaMedia";
 import { getJsonFromFetch, getResultFromFetch } from "../utils/utils";
 import { wait } from "../utils/utils";
 import { getOptions } from "../utils/utils";
@@ -9,7 +10,7 @@ const popolaPopularseries = (series, idWrapper) => {
     let cardWrapper = document.getElementById(idWrapper);
     cardWrapper.innerHTML = "";
     series.forEach(film => {
-        cardWrapper.appendChild(createMovieMinimalCard(film.name, film.first_air_date, film.poster_path, film.id));
+        cardWrapper.appendChild(createMovieMinimalCard(normalizzaMedia(film)));
     }); 
 };
 
@@ -29,6 +30,7 @@ seriesListFilter.addEventListener("change", async () => {
 
 const loadPage = async (pageNumber, serie_list) => {
     let seriesPopular = await getResultFromFetch(`https://api.themoviedb.org/3/tv/${serie_list}?language=it-IT&page=${pageNumber}&region=eu`, getOptions);
+    
     loadHomePage(seriesPopular);
 
     page == 1 ? prevPageBtn.disabled = true : prevPageBtn.disabled = false;

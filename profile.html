@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Il mio Profilo</title>
   <link rel="stylesheet" href="src/style/style.css">
 
 </head>
@@ -48,7 +48,106 @@
       </div>
       <!-- CONTENT HERE -->
       <main class="flex-1 bg-textPrimary">
+        <section class="bg-primary sfondo-chiaro text-textPrimary">
+          <div class="max-w-300 mx-auto h-full flex flex-col lg:flex-row gap-8 items-center my-5">
+            <div class="avatar">
+              <div class="w-42 rounded-full">
+                <img src="https://img.daisyui.com/images/profile/demo/batperson@192.webp" />
+              </div>
+            </div>
+            <div class="flex flex-col gap-3 items-center lg:items-start">
+              <div class="text-textPrimary font-bold text-4xl">
+                Granafilo
+              </div>
+              <div class="flex gap-8 items-center">
 
+                <div class="flex gap-2 items-center">
+                  <div class="radial-progress bg-[#d6bc9e]" style="--value:84; --size: 4rem; --thickness: 6px;"
+                    aria-valuenow="84" role="progressbar">84%
+                  </div>
+                  <div class="flex flex-col">
+                    Media
+                    <span>
+                      Punteggio Film
+                    </span>
+                  </div>
+                </div>
+
+                <div class="divider divider-neutral divider-horizontal"></div>
+
+                <div class="flex gap-2 items-center">
+                  <div class="radial-progress bg-[#9ea2d6]" style="--value:83; --size: 4rem; --thickness: 6px;"
+                    aria-valuenow="83" role="progressbar">83%
+                  </div>
+                  <div class="flex flex-col">
+                    Media
+                    <span>
+                      Punteggio TV
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="bg-primary border-b border-zinc-600">
+          <div class="max-w-300 mx-auto h-full flex gap-8 items-center justify-center">
+            <ul class="menu menu-horizontal ">
+              <li class="w-30 flex">
+                <details>
+                  <summary>Overview</summary>
+                  <ul class="bg-primary">
+                    <li><a>Main</a></li>
+                    <li><a>Favoriti</a></li>
+                    <li><a>Consigliati</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li class="w-30 flex"><a class="w-full flex justify-center">Discussioni</a></li>
+              <li class="w-30 flex"><a class="w-full flex justify-center">Liste</a></li>
+              <li class="w-30 flex">
+                <details>
+                  <summary>Valutazione</summary>
+                  <ul class="bg-primary">
+                    <li><a>Film</a></li>
+                    <li><a>Serie TV</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li class="w-30 flex">
+                <details>
+                  <summary>Recensioni</summary>
+                  <ul class="bg-primary">
+                    <li><a>Film</a></li>
+                    <li><a>Serie TV</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li class="w-30 flex">
+                <details>
+                  <summary>Watchlist</summary>
+                  <ul class="bg-primary">
+                    <li><a>Film</a></li>
+                    <li><a>Serie TV</a></li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </div>
+
+        </section>
+        <section class="py-5 bg-primary ">
+          <div class="max-w-300 mx-auto flex items-center justify-center gap-5">
+            <figure class="w-24">
+              <a href="https://github.com/granafilo/movieapp-granata.git" target="_blank"><img src="./github.png" alt=""></a>
+            </figure>
+            <div class="text-4xl font-bold">
+              <a href="https://github.com/granafilo/movieapp-granata.git" target="_blank">Repo Github</a>
+            </div>
+          </div>
+
+        </section>
       </main>
       <footer class=" footer footer-horizontal footer-center bg-primary text-textSecondary p-10 border-t border-dashed">
         <nav class="grid grid-flow-col gap-4">

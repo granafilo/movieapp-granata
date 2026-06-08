@@ -81,26 +81,25 @@ const colorBadge = (voto) => {
   }
 };
 
-export const createMovieMinimalCard = (title, data, image, id, tipo) => {
+export const createMovieMinimalCard = (film) => {
 
-  const dataUscita1 = new Date(data);
+  const dataUscita1 = new Date(film.data);
 
   const opzioni = { day: 'numeric', month: 'long', year: 'numeric' };
   const dataFormattata = dataUscita1.toLocaleDateString('it-IT', opzioni).replace(/ (\d{4})/, ', $1');
 
-
   let cardContainer = document.createElement("div");
   cardContainer.className = "card w-50 h-auto shrink-0 group cursor-pointer transition-all duration-300 shadow-lg more-info"
-  cardContainer.dataset.idFilm = id;
-  cardContainer.dataset.type = tipo
+  cardContainer.dataset.idFilm = film.id;
+  cardContainer.dataset.type = film.mediaType
 
   let figureElement = document.createElement("figure");
   figureElement.className = "w-full overflow-hidden rounded-lg";
 
   let imageElement = document.createElement("img");
   imageElement.className = "w-full h-full object-cover hover:scale-110 duration-300";
-  imageElement.src = `https://media.themoviedb.org/t/p/w220_and_h330_face${image}`;
-  imageElement.alt = `${title}`
+  imageElement.src = `https://media.themoviedb.org/t/p/w220_and_h330_face${film.image}`;
+  imageElement.alt = `${film.title}`
 
   figureElement.appendChild(imageElement);
 
@@ -109,13 +108,13 @@ export const createMovieMinimalCard = (title, data, image, id, tipo) => {
   cardBody.className = "card-body p-[10px_5px_5px_5px] ";
 
   let cardTitle = document.createElement("h2");
-  cardTitle.innerText = `${title}`;
-  cardTitle.title = `${title}`
+  cardTitle.innerText = `${film.title}`;
+  cardTitle.title = `${film.title}`
   cardTitle.className = "font-bold text-textPrimary text-lg line-clamp-3 group-hover:underline ";
 
   let dataUscita = document.createElement("div");
   dataUscita.className = "text-textSecondary";
-  dataUscita.innerText = `${dataFormattata}`;
+  dataUscita.innerText = `${dataFormattata}`; 
 
   cardBody.appendChild(cardTitle);
   cardBody.appendChild(dataUscita);
